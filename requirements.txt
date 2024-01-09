@@ -1,0 +1,6 @@
+flask[async]
+uvicorn[standard]
+g4f
+beanie
+colorlog
+Font-Awesome-Flask

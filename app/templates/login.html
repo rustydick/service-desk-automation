@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% from 'bootstrap5/nav.html' import render_form %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<style>
+    body {
+        background: url('path_to_abstract_background_image.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Service Desk Automation</h5>
+                    <hr>
+                    <p>To continue, please log in with your GitHub account.</p>
+                    <a href="#" class="btn btn-primary">
+                        {{font_awesome.render_icon("fab fa-github")}}
+                        Log in using GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
