@@ -3,12 +3,12 @@
 
 <head>
     {% block head %}
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- CSS, optional -->
     {% block styles %}
-    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="static/global.css">
     {{ bootstrap.load_css() }}
     {{ font_awesome.load_css() }}
     {% endblock %}
@@ -18,11 +18,12 @@
 </head>
 
 <body>
-    <!-- Your page content -->
+    <!-- Page content, required -->
     {% block content %}{% endblock %}
 
+    <!-- JavaScript, optional -->
     {% block scripts %}
-    <!-- Optional JavaScript -->
+    <script src="//unpkg.com/alpinejs" defer></script>
     {{ bootstrap.load_js() }}
     {{ font_awesome.load_js() }}
     {% endblock %}

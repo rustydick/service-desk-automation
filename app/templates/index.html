@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}{{_("App Name")}}: {{_("Main Page")}}{% endblock %}
+
+{% block content %}
+<div class="row p-4">
+    <div class="col-md-3">
+        <div class="mb-3 align-items-center justify-content-between d-flex" style="height: 31px;">
+            <h6 class="user-select-none mb-0">{{_("Tasks")}}:</h6>
+            {% if request.args.get('task') %}
+            <a class="btn btn-secondary btn-sm" href="/">
+                {{font_awesome.render_icon("fas fa-times")}}
+                {{_("Deselect")}}
+            </a>
+            {% endif %}
+        </div>
+        {% for task in tasks %}
+        <a class="card mb-3 hover-scale active-scale user-select-none text-decoration-none {% if task.id == request.args.get('task') %}bg-secondary{% endif %}"
+            href="?task={{task.id}}">
+            <div class="card-body">
+                <h6 class="card-title">{{ task.title }}</h6>
+                <small class="card-text">{{ task.message }}</small>
+            </div>
+            <div class="card-footer">
+                <small><small>{{task.time}} - {{task.hash[:7] or _("self-added")}}</small></small>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="col-md-9">
+        <div class="mb-3 align-items-center justify-content-between d-flex" style="height: 31px;">
+            <h6 class="user-select-none mb-0">{{_("Details")}}:</h6>
+            <div>
+                {% if request.args.get('task') %}
+                <a class="btn btn-secondary btn-sm"
+                    href="https://github.com/n-matveev/police/commit/f9293a2f4f8ee46efccd0cc5d4da3775b6b1e228">
+                    {{font_awesome.render_icon("fas fa-code-branch")}}
+                    {{_("View commit")}}</a>
+                <a class="btn btn-secondary btn-sm" href="">
+                    {{font_awesome.render_icon("fas fa-eye")}}
+                    {{_("View task")}}</a>
+                {% endif %}
+            </div>
+        </div>
+        <div id="task">
+            {% if request.args.get('task') %}
+            <p>{{_("Details.")}}</p>
+            {% else %}
+            <h3>{{_("Start writing your task")}}:</h3>
+            <input type="text" class="form-control form-control-lg bg-body-secondary">
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
