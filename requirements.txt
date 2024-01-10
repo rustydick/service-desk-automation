@@ -3,5 +3,6 @@ uvicorn[standard]
 g4f
 beanie
 colorlog
+bootstrap-flask
 Font-Awesome-Flask
 Flask-Babel
